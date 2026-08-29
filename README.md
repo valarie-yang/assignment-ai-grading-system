@@ -2,7 +2,7 @@
 
 A public-safe portfolio package for an AI-assisted assessment workflow that combines rubric-based evaluation, teacher review, explainability, and controlled release gates.
 
-**Status:** Offline runnable MVP and local AI bridge verified; public repository contains curated product, architecture, evaluation, and synthetic-demo materials. Formal production AI grading is not claimed.
+**Status:** An offline runnable MVP and local AI bridge were verified in a separate private/local implementation; this public repository contains curated product, architecture, evaluation, and synthetic-demo materials. Formal production AI grading is not claimed.
 
 **Role lens:** AI Product Management · Technical Product Prototyping · Workflow Systems · Applied AI
 
@@ -36,9 +36,9 @@ The product problem is not simply “call a large language model to grade an ans
 
 The teacher remains the final decision-maker. An AI result is not equivalent to a final grade and cannot be published without the defined review step.
 
-## What has been verified locally
+## What was verified locally
 
-The underlying offline MVP and local DeepSeek bridge have been exercised through:
+The private/offline MVP and local DeepSeek bridge were exercised through:
 
 - student submission and version handling;
 - course, assignment, roster, and rubric workflows;
