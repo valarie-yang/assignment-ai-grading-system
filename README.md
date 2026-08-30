@@ -76,6 +76,11 @@ The AI provider is an adapter behind a controlled interface. Its output must pas
 - [docs/privacy-and-security.md](docs/privacy-and-security.md) — public-safe data and production controls
 - [docs/demo-script.md](docs/demo-script.md) — a recruiter-friendly walkthrough
 - [docs/limitations.md](docs/limitations.md) — what is implemented, proposed, and not claimed
+- [docs/portfolio-evidence-index.md](docs/portfolio-evidence-index.md) — recruiter reading path and evidence status
+- [docs/public-release-checklist.md](docs/public-release-checklist.md) — public commit release gate
+- [docs/data-classification.md](docs/data-classification.md) — public/internal/restricted/never-public boundaries
+- [docs/threat-model.md](docs/threat-model.md) — assessment workflow threats and controls
+- [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) — educational content and dependency boundary
 
 ## Intended recruiter takeaway
 
