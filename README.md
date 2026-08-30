@@ -6,6 +6,8 @@ A public-safe portfolio package for an AI-assisted assessment workflow that comb
 
 **Role lens:** AI Product Management · Technical Product Prototyping · Workflow Systems · Applied AI
 
+![Assessment workflow](assets/portfolio-signal.svg)
+
 > This repository intentionally does not mirror the private implementation. It contains only public-safe materials and synthetic examples. No student data, real submissions, API keys, credentials, internal configuration, or employer-confidential content is included.
 
 ## Product signal
