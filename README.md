@@ -8,6 +8,17 @@ A public-safe portfolio package for an AI-assisted assessment workflow that comb
 
 ![Assessment workflow](assets/portfolio-signal.svg)
 
+## Case evidence: role / inputs / outputs / result / boundary
+
+| | Portfolio proof |
+|---|---|
+| **My role** | Owned the assessment workflow, rubric/state model, structured AI contract, teacher review gate, release traceability and evaluation plan. |
+| **Inputs** | Synthetic submission file, assignment/rubric, model/provider configuration and versioned workflow state. |
+| **AI + system work** | AI drafts evidence and preliminary scoring; schema validation, rule fallback and workflow states keep the result inspectable. |
+| **Outputs** | Evidence map, draft score, teacher revision queue, approved/rejected release state and exportable report. |
+| **Result** | A locally verified offline MVP/review loop in the private implementation, with public-safe PRD, state model, demo script and evaluation materials here. |
+| **Boundary** | Teacher owns the final grade; no production-scale quality, autonomous release or public student data is claimed. |
+
 > This repository intentionally does not mirror the private implementation. It contains only public-safe materials and synthetic examples. No student data, real submissions, API keys, credentials, internal configuration, or employer-confidential content is included.
 
 ## Product signal
