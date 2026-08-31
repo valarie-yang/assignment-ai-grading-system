@@ -8,6 +8,22 @@ A public-safe portfolio package for an AI-assisted assessment workflow that comb
 
 ![Assessment workflow](assets/portfolio-signal.svg)
 
+![Detailed evidence preview](assets/evidence-overview.svg)
+
+
+## Quick start and verification
+
+1. Open the [detailed evidence preview](assets/evidence-overview.svg) to see submission, schema-validated assessment, teacher review and controlled release.
+2. Follow the [portfolio evidence index](docs/portfolio-evidence-index.md).
+3. Read the [architecture/state model](docs/architecture-and-state-model.md), [AI boundary](docs/ai-boundary.md), [evaluation plan](docs/evaluation-plan.md), and [limitations](docs/limitations.md).
+
+**Public runtime:** The runnable offline MVP and local AI bridge were verified in a separate private/local implementation. This public repository intentionally contains curated product, evaluation and synthetic-demo material only.
+
+**Test command:** `N/A — no public application test suite is claimed.` The private/local verification scope is documented; the public package is validated through the evidence index and release checklist.
+
+**Evidence level:** `public-safe reconstruction` · `synthetic artifacts` · `private/local MVP verification`; not production-scale autonomous grading.
+
+The teacher remains the final decision-maker; AI drafts are not equivalent to final grades.
 ## Case evidence: role / inputs / outputs / result / boundary
 
 | | Portfolio proof |
