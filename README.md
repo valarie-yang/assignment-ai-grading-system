@@ -98,3 +98,10 @@ The AI provider is an adapter behind a controlled interface. Its output must pas
 ## Intended recruiter takeaway
 
 This case demonstrates product judgment across AI workflow design, structured outputs, human-in-the-loop controls, privacy boundaries, provider abstraction, state modeling, and evaluation planning. It is an applied AI product case—not a claim of autonomous grading or a production education platform.
+
+
+## Public-safe product decisions
+
+The reviewed private baseline was distilled into a separate public-safe product artifact. It contains product decisions and review boundaries only; it does not mirror private implementation, real records, credentials, internal URLs, or source content.
+
+- [Public-safe product decisions](docs/public-safe-product-decisions.md)
