@@ -1,123 +1,52 @@
-# Human-in-the-Loop AI Assignment Grading System
+# AI Assignment Grading Assistant
 
-A public-safe portfolio package for an AI-assisted assessment workflow that combines rubric-based evaluation, teacher review, explainability, and controlled release gates.
+A teacher-in-the-loop prototype for turning assignment requirements into a reviewable rubric, then drafting criterion-linked AI scoring suggestions for teacher review.
 
-**Status:** An offline runnable MVP and local AI bridge were verified in a separate private/local implementation; this public repository contains curated product, architecture, evaluation, and synthetic-demo materials. Formal production AI grading is not claimed.
+![AI assignment grading workflow](https://raw.githubusercontent.com/valarie-yang/valarie-website/main/assets/ai-assignment-grading-flow-mobile.svg)
 
-**Role lens:** AI Product Management · Technical Product Prototyping · Workflow Systems · Applied AI
+## Product hypothesis
 
-![Assessment workflow](assets/portfolio-signal.svg)
+Teachers may benefit from a consistent way to move from assignment requirements to explicit scoring criteria and evidence-linked preliminary feedback. This is a product hypothesis—not a finding from user interviews, classroom research, or measured time savings.
 
-![Detailed evidence preview](assets/evidence-overview.svg)
+## Workflow
 
+1. Import or enter the final assignment requirements.
+2. Generate a draft rubric from those requirements.
+3. A teacher reviews and locks the rubric.
+4. Submit student work for AI preliminary scoring against the locked criteria.
+5. Review the criterion-linked score suggestions and evidence; edit or override as needed.
+6. A teacher confirms the final grade.
 
-## Quick start and verification
+Rubric approval and locking is a prerequisite for AI preliminary scoring. It is intended to keep the scoring basis explicit; it does not eliminate bias or guarantee accurate grading.
 
-1. Open the [detailed evidence preview](assets/evidence-overview.svg) to see submission, schema-validated assessment, teacher review and controlled release.
-2. Follow the [portfolio evidence index](docs/portfolio-evidence-index.md).
-3. Read the [architecture/state model](docs/architecture-and-state-model.md), [AI boundary](docs/ai-boundary.md), [evaluation plan](docs/evaluation-plan.md), and [limitations](docs/limitations.md).
+## What the current prototype supports
 
-**Public runtime:** The runnable offline MVP and local AI bridge were verified in a separate private/local implementation. This public repository intentionally contains curated product, evaluation and synthetic-demo material only.
+- A browser-based workbench for assignment/rubric and submission review.
+- Rubric drafting from assignment requirements, followed by a teacher approval gate.
+- Criterion-organized AI preliminary scoring with teacher review and final confirmation.
+- Local data handling in the browser-based implementation; AI scoring requires a separately configured local bridge.
 
-**Test command:** `N/A — no public application test suite is claimed.` The private/local verification scope is documented; the public package is validated through the evidence index and release checklist.
+The public page shows the workbench interface. It is not a visitor-operated cloud grading service. When AI scoring is enabled, submission text, assignment name, and rubric are sent through the local bridge to the configured model provider. Use only authorized or synthetic work and review the provider's data terms. The public repository is a curated portfolio package; it does not mirror the private/local product source.
 
-**Evidence level:** `public-safe reconstruction` · `synthetic artifacts` · `private/local MVP verification`; not production-scale autonomous grading.
+## Product decisions
 
-The teacher remains the final decision-maker; AI drafts are not equivalent to final grades.
-## Case evidence: role / inputs / outputs / result / boundary
+- **Rubric first:** make the assessment basis explicit before AI scoring.
+- **Evidence over a bare score:** attach suggestions to criteria and response evidence so the teacher can inspect them.
+- **Human authority:** AI produces preliminary suggestions; the teacher edits and confirms the final grade.
+- **Bounded deployment:** distinguish a publicly viewable page from the local model/API bridge needed for scoring.
 
-| | Portfolio proof |
-|---|---|
-| **My role** | Owned the assessment workflow, rubric/state model, structured AI contract, teacher review gate, release traceability and evaluation plan. |
-| **Inputs** | Synthetic submission file, assignment/rubric, model/provider configuration and versioned workflow state. |
-| **AI + system work** | AI drafts evidence and preliminary scoring; schema validation, rule fallback and workflow states keep the result inspectable. |
-| **Outputs** | Evidence map, draft score, teacher revision queue, approved/rejected release state and exportable report. |
-| **Result** | A locally verified offline MVP/review loop in the private implementation, with public-safe PRD, state model, demo script and evaluation materials here. |
-| **Boundary** | Teacher owns the final grade; no production-scale quality, autonomous release or public student data is claimed. |
+## Validation still needed
 
-> This repository intentionally does not mirror the private implementation. It contains only public-safe materials and synthetic examples. No student data, real submissions, API keys, credentials, internal configuration, or employer-confidential content is included.
+Accuracy, reliability, teacher review time, rubric edits, override rates, and classroom adoption have not been validated. Next tests should use authorized or synthetic submissions, teacher-defined answer keys, repeated model runs, and review-time observations. Proposed measures are not results.
 
-## Product signal
+## Early API cost observation
 
-The product problem is not simply “call a large language model to grade an answer.” A credible assessment workflow must:
+Author-reported mean from a small-scale test setup: approximately **CNY 0.2 per assignment** for DeepSeek API calls. The sample size and call scope are not standardized; this is not a quote, benchmark, quality claim, or guarantee. Cost varies with the model, assignment length, prompt, and retries.
 
-- let teachers define and validate a rubric;
-- accept and track student submissions;
-- produce a structured AI preliminary assessment;
-- show evidence and reasoning that a teacher can review;
-- allow teacher edits or overrides;
-- preserve the difference between AI assessment and the final published grade;
-- keep privacy, auditability, provider configuration, and release gates explicit.
+## Public-data boundary
 
-## End-to-end workflow
+This repository contains public-safe product, workflow, evaluation, and synthetic-demo materials—not student records, credentials, internal deployment details, or the complete private source. Do not publish real student submissions, API keys, or confidential course content.
 
-    DRAFT
-      ↓
-    SUBMITTED
-      ↓
-    AI_ASSESSED
-      ↓
-    TEACHER_REVIEW
-      ↓
-    REVISED
-      ↓
-    RELEASED
+## About this portfolio case
 
-The teacher remains the final decision-maker. An AI result is not equivalent to a final grade and cannot be published without the defined review step.
-
-## What was verified locally
-
-The private/offline MVP and local DeepSeek bridge were exercised through:
-
-- student submission and version handling;
-- course, assignment, roster, and rubric workflows;
-- CSV and multi-file import;
-- local persistence, workspace backup, and restore;
-- structured AI preliminary assessment;
-- teacher review and report export;
-- local smoke, core-flow, syntax, and secret-scan checks.
-
-These are local verification signals, not evidence of production scale, model quality, or external user outcomes. The formal production path remains gated until immutable model-version capture and production security controls are verified.
-
-## Architecture signal
-
-The system is organized around explicit domain objects:
-
-    Course → Assignment → Rubric
-    Student → Submission → AIAssessment → TeacherReview → FinalGrade
-
-The AI provider is an adapter behind a controlled interface. Its output must pass schema validation before entering the review workflow. The production-minded boundary also calls for:
-
-- prompt and model version capture;
-- authenticated access and role separation;
-- protected object storage for uploaded files;
-- encrypted database connections and secrets management;
-- retention and deletion rules;
-- retry, failure, and observability paths;
-- synthetic fixtures and repeatable evaluation.
-
-## Public repository map
-
-- [docs/product-brief.md](docs/product-brief.md) — users, problem, scope, and product decisions
-- [docs/architecture-and-state-model.md](docs/architecture-and-state-model.md) — domain objects, lifecycle, and boundaries
-- [docs/ai-boundary.md](docs/ai-boundary.md) — AI output, human review, and release gates
-- [docs/evaluation-plan.md](docs/evaluation-plan.md) — metrics, golden cases, and local verification
-- [docs/privacy-and-security.md](docs/privacy-and-security.md) — public-safe data and production controls
-- [docs/demo-script.md](docs/demo-script.md) — a recruiter-friendly walkthrough
-- [docs/limitations.md](docs/limitations.md) — what is implemented, proposed, and not claimed
-- [docs/portfolio-evidence-index.md](docs/portfolio-evidence-index.md) — recruiter reading path and evidence status
-- [docs/public-release-checklist.md](docs/public-release-checklist.md) — public commit release gate
-- [docs/data-classification.md](docs/data-classification.md) — public/internal/restricted/never-public boundaries
-- [docs/threat-model.md](docs/threat-model.md) — assessment workflow threats and controls
-- [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) — educational content and dependency boundary
-
-## Intended recruiter takeaway
-
-This case demonstrates product judgment across AI workflow design, structured outputs, human-in-the-loop controls, privacy boundaries, provider abstraction, state modeling, and evaluation planning. It is an applied AI product case—not a claim of autonomous grading or a production education platform.
-
-
-## Public-safe product decisions
-
-The reviewed private baseline was distilled into a separate public-safe product artifact. It contains product decisions and review boundaries only; it does not mirror private implementation, real records, credentials, internal URLs, or source content.
-
-- [Public-safe product decisions](docs/public-safe-product-decisions.md)
+I framed the product hypothesis, designed the teacher-controlled workflow, and built the prototype through AI-assisted coding. This demonstrates product framing and prototype execution; it does not claim a validated classroom outcome or production-scale service.
